@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.28/"></script>
+
+    <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], function(esriConfig, Map, MapView, FeatureLayer) {
+      // esriConfig.apiKey = "AAPK3bf190c5d95a4f69b40b193f8f55fad3rA4MK0PeRlTrPGYwH4NgqDrdq4CyilJ1eycZBdxQR--Kakg4iAWxHEh1EE6-0yHu";
+
+        const map = new Map({
+          basemap: "arcgis/topographic" // basemap styles service
+        });
+        const view = new MapView({
+          map: map,
+          center: [-103, 44], // Longitude, latitude
+          zoom: 3, // Zoom level
+          container: "viewDiv" // Div element
+        });
+        //Valentine's feature layer (points)
+            const valentineLayer = new FeatureLayer({
+            url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA/FeatureServer/0"
+          });
+          map.add(trailheadsLayer);
+
+      });
+    </script>
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
