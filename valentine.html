@@ -31,11 +31,16 @@
           zoom: 4, // Zoom level
           container: "viewDiv" // Div element
         });
-        //Valentine's feature layer (points)
-            const valentineLayer = new FeatureLayer({
-            url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA/FeatureServer/0"
+        // Valentine's point layer (points)
+            const valentinePointLayer = new FeatureLayer({
+            url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA_point/FeatureServer"
           });
-          map.add(valentineLayer);
+          map.add(valentinePointLayer);
+        // Heart shape layer (polygons)
+          const heartLayer = new FeatureLayer({
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA_Shape/FeatureServer"
+          });
+          map.add(heartLayer, 0);
 
       });
     </script>
