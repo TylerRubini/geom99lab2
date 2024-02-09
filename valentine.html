@@ -19,28 +19,33 @@
     <script src="https://js.arcgis.com/4.28/"></script>
 
     <script>
-      require(["esri/config", "esri/WebMap", "esri/views/MapView", "esri/widgets/ScaleBar", "esri/widgets/Legend"], function(esriConfig, WebMap, MapView, ScaleBar, Legend) {
-      // esriConfig.apiKey = "AAPK3bf190c5d95a4f69b40b193f8f55fad3rA4MK0PeRlTrPGYwH4NgqDrdq4CyilJ1eycZBdxQR--Kakg4iAWxHEh1EE6-0yHu";
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"], function(esriConfig, Map, MapView, FeatureLayer) {
+      esriConfig.apiKey = "AAPK3bf190c5d95a4f69b40b193f8f55fad3rA4MK0PeRlTrPGYwH4NgqDrdq4CyilJ1eycZBdxQR--Kakg4iAWxHEh1EE6-0yHu";
 
-      const webmap = new WebMap({
-        portalItem: {
-          id: "8f71246f231a4d779baf8a10470c7f6e"
-        }
-      });
+        const map = new Map({
+          basemap: "arcgis/topographic" // basemap styles service
+        });
         const view = new MapView({
-          map: webmap
+          map: map,
+          center: [-103, 44], // Longitude, latitude
+          zoom: 3, // Zoom level
+          container: "viewDiv" // Div element
+        });
+		const updateBasemapStyle = (basemapId) => {
+			view.map.basemap = basemapId;
+        };
+        // Valentine's point layer (points)
+            const valentinePointLayer = new FeatureLayer({
+            url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA_point/FeatureServer"
+          });
+          map.add(valentinePointLayer);
+        // Heart shape layer (polygons)
+          const heartLayer = new FeatureLayer({
+          url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Valentine_USA_Shape/FeatureServer"
+          });
+          map.add(heartLayer, 0);
+
       });
-        
-      const scalebar = new ScaleBar({
-        view: view
-      });
-      view.ui.add(scalebar, "bottom-left");
-        
-      const legend = new Legend ({
-        view: view
-      });
-      view.ui.add(legend, "top-right");
-        
     </script>
 
   </head>
