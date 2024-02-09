@@ -1,0 +1,5 @@
+I am not able to get my custom map working using the instructions on D2L. I am encountering the same API key bug that is present in the first two tutorials, but I have not been able to resolve it using the suggested method.
+I attempted to insert both raw feature classes (as you can see in my final submission) and I also attempted to insert a pre-created web map as an alternative, but I had no luck getting either to work. Removing the API key and setting all of
+the components to public in ArcGIS Online just gives me a login screen regardless of whether I'm signed into AGOL or not. Replacing the API key with the token and running it locally does result in the underlying feature classes
+appearing, but no base map appears and the zoom/centre settings I've set seem to have no effect. I have included a screenshot of the latter issue <a href=https://tylerrubini.github.io/geom99lab2/valentinebug.png>here</a>. 
+This is occurring in Mozilla Firefox, but I have replicated both issues in Microsoft Edge as well.
